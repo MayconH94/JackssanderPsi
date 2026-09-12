@@ -16,6 +16,15 @@
     --maxw:1180px;
   }
 
+
+  .brand-logo {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 100px; }
+
+
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
