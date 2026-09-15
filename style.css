@@ -254,8 +254,26 @@
 }
 
   @media (max-width: 900px){
-    nav ul{display:none;}
+    .nav{position:relative;flex-wrap:nowrap;}
+    .nav-links .btn-primary{display:none;} /* evita overflow no header; CTA continua acessível pelo botão flutuante do WhatsApp */
     .menu-toggle{display:block;}
+    .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+    .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .menu-toggle span{transition:transform .2s ease, opacity .2s ease;}
+    nav ul{
+      display:none;
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:2px;
+      background:var(--surface);
+      border-bottom:1px solid var(--sage-line);
+      box-shadow:0 16px 24px rgba(34,48,30,.10);
+      padding:10px 32px 20px;
+      margin:0;
+    }
+    nav ul.open{display:flex;}
+    nav ul li{width:100%;}
+    nav ul a{display:block;padding:13px 0;border-bottom:1px solid var(--sage-line);}
     .hero .wrap{grid-template-columns:1fr;}
     .hero-art{order:-1;max-width:280px;margin:0 auto;}
     .sobre .wrap{grid-template-columns:1fr;}
@@ -266,9 +284,17 @@
   }
   @media (max-width: 560px){
     .wrap{padding:0 20px;}
+    .nav{padding:14px 20px;}
+    nav ul{padding:10px 20px 20px;}
+    .brand-logo{height:42px;}
+    .brand{gap:8px;}
+    .brand-name{font-size:16px;}
     .steps{grid-template-columns:1fr;}
     .grid-atuacao{grid-template-columns:1fr;}
     section{padding:64px 0;}
+  }
+  @media (max-width: 360px){
+    .brand-name{display:none;} /* logo sozinho evita qualquer aperto em telas muito estreitas */
   }
 
   [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
